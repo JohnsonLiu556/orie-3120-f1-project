@@ -28,10 +28,11 @@ pip install -r requirements.txt
 
 2. **Generate visualizations**:
    ```bash
-   python scripts/viz_pole_win.py      # Pole-to-win conversion rate
-   python scripts/viz_circuit_type.py  # Circuit type analysis
-   python scripts/viz_grid_finish_era.py # Grid vs finish by era
-   python scripts/viz_pitstops.py      # Pit stop analysis
+   python scripts/viz_pole_win.py          # Pole-to-win conversion rate
+   python scripts/viz_circuit_type.py     # Circuit type analysis
+   python scripts/viz_grid_finish_era.py  # Grid vs finish by era
+   python scripts/viz_pitstops.py         # Pit stop analysis
+   python scripts/viz_win_rate_by_grid.py # Win rate by starting grid position
    ```
 
 3. **Validate**:
