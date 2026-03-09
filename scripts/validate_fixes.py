@@ -19,6 +19,7 @@ print("Fix 1 data check PASSED")
 
 # Fig 2: street era finding
 circuits = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_circuits.csv"))
+# Keep this list in sync with viz_circuit_type.py (canonical source)
 street_kw = [
     "street", "Street", "Monaco", "Marina Bay", "Baku", "Albert Park",
     "Adelaide", "Phoenix", "Detroit", "Long Beach", "Las Vegas", "Miami",

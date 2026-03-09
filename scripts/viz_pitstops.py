@@ -26,13 +26,9 @@ race_info["pole_win"] = race_info["pole_driverId"] == race_info["winner_driverId
 winner_stops = race_info[["raceId", "winner_driverId"]].merge(
     pit_counts, left_on=["raceId", "winner_driverId"], right_on=["raceId", "driverId"], how="left"
 )[["raceId", "n_pit_stops"]].rename(columns={"n_pit_stops": "winner_pit_stops"})
-pole_stops = race_info[["raceId", "pole_driverId"]].merge(
-    pit_counts, left_on=["raceId", "pole_driverId"], right_on=["raceId", "driverId"], how="left"
-)[["raceId", "n_pit_stops"]].rename(columns={"n_pit_stops": "pole_sitter_pit_stops"})
 
-race_info = race_info.merge(winner_stops, on="raceId").merge(pole_stops, on="raceId")
+race_info = race_info.merge(winner_stops, on="raceId")
 race_info["winner_pit_stops"] = race_info["winner_pit_stops"].astype(float)
-race_info["pole_sitter_pit_stops"] = race_info["pole_sitter_pit_stops"].fillna(0).astype(int)
 
 analysis = race_info.dropna(subset=["winner_pit_stops"]).copy()
 analysis["winner_pit_stops"] = analysis["winner_pit_stops"].astype(int)
