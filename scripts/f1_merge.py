@@ -63,9 +63,6 @@ else:
 merged = merged.drop_duplicates(subset=["raceId", "driverId"], keep="first")
 
 races = dfs["races"]
-races_1983 = races.loc[races["year"] >= 1983, "raceId"]
-merged = merged[merged["raceId"].isin(races_1983)]
-
 races_2003_2022 = races.loc[(races["year"] >= 2003) & (races["year"] <= 2022), "raceId"]
 merged = merged[merged["raceId"].isin(races_2003_2022)]
 
