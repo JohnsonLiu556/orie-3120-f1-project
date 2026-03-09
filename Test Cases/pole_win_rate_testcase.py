@@ -1,10 +1,13 @@
+import os
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("f1_merged.csv")
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+df = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))
 df2 = df.merge(races[['raceId','year']], on='raceId')
 df2 = df2[(df2['year'] >= 2003) & (df2['year'] <= 2022)]
 
@@ -44,7 +47,7 @@ assert 45 <= overall_mean <= 60, f"FAIL: mean rate {overall_mean:.1f}% outside e
 
 # Test 6: Image file was created and is non-empty
 import os
-assert os.path.exists("plots/viz1_pole_win_rate.png"), "FAIL: output image not found"
-assert os.path.getsize("plots/viz1_pole_win_rate.png") > 50000, "FAIL: image file suspiciously small"
+assert os.path.exists(os.path.join(PROJECT_ROOT, "plots", "viz1_pole_win_rate.png")), "FAIL: output image not found"
+assert os.path.getsize(os.path.join(PROJECT_ROOT, "plots", "viz1_pole_win_rate.png")) > 50000, "FAIL: image file suspiciously small"
 
 print("ALL viz_pole_win tests PASSED")

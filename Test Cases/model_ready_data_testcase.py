@@ -1,17 +1,18 @@
 import os
 import pandas as pd
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MODEL_PATH = "f1_model_ready_2011_2022.csv"
+MODEL_PATH = os.path.join(PROJECT_ROOT, "f1_model_ready_2011_2022.csv")
 PIT_BINARY_THRESHOLD = 3
 
 
 assert os.path.exists(MODEL_PATH), f"FAIL: model-ready file not found at {MODEL_PATH}"
 
 df = pd.read_csv(MODEL_PATH)
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")[["raceId", "year"]]
-merged = pd.read_csv("f1_merged.csv")
-pit = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_pit_stops.csv")
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))[["raceId", "year"]]
+merged = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+pit = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_pit_stops.csv"))
 
 base = merged.merge(races[races["year"].between(2011, 2022)], on="raceId", how="inner")
 pit_counts = pit[pit["raceId"].isin(base["raceId"])].groupby(["raceId", "driverId"]).size()

@@ -1,8 +1,11 @@
+import os
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("f1_merged.csv")
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+df = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))
 df2 = df.merge(races[['raceId','year']], on='raceId')
 df2 = df2[(df2['year'] >= 2003) & (df2['year'] <= 2022)]
 
@@ -42,7 +45,6 @@ assert (df2['grid'] > 0).all(),    "FAIL: non-positive grid values found"
 assert (df2['position'] > 0).all(),"FAIL: non-positive position values found"
 
 # Test 6: Image created
-import os
-assert os.path.exists("plots/viz3_grid_vs_finish_era.png"), "FAIL: image not found"
+assert os.path.exists(os.path.join(PROJECT_ROOT, "plots", "viz3_grid_vs_finish_era.png")), "FAIL: image not found"
 
 print("ALL viz_grid_finish_era tests PASSED")

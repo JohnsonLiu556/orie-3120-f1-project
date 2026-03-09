@@ -1,6 +1,10 @@
+import os
 import pandas as pd
-df = pd.read_csv("f1_merged.csv")
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+df = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))
 df2 = df.merge(races[['raceId','year']], on='raceId')
 
 # Test 1: No pre-2003 data

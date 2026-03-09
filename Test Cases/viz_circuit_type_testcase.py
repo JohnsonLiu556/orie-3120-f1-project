@@ -1,9 +1,12 @@
+import os
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("f1_merged.csv")
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")
-circuits = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_circuits.csv")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+df = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))
+circuits = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_circuits.csv"))
 
 df2 = df.merge(races[['raceId','year','circuitId']], on='raceId')
 df2 = df2[(df2['year'] >= 2003) & (df2['year'] <= 2022)]
@@ -51,7 +54,6 @@ _, p = stats.ttest_ind(street_wins, perm_wins)
 assert p > 0.05, f"FAIL: p={p:.4f}, expected p > 0.05 (no significant difference)"
 
 # Test 6: Image was created
-import os
-assert os.path.exists("plots/viz2_circuit_type.png"), "FAIL: image not found"
+assert os.path.exists(os.path.join(PROJECT_ROOT, "plots", "viz2_circuit_type.png")), "FAIL: image not found"
 
 print("ALL viz_circuit_type tests PASSED")

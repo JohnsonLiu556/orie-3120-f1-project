@@ -1,9 +1,12 @@
+import os
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv("f1_merged.csv")
-races = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_races.csv")
-pit = pd.read_csv("Formula 1 Dataset Cleaned/cleaned_pit_stops.csv")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+df = pd.read_csv(os.path.join(PROJECT_ROOT, "f1_merged.csv"))
+races = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_races.csv"))
+pit = pd.read_csv(os.path.join(PROJECT_ROOT, "Formula 1 Dataset Cleaned", "cleaned_pit_stops.csv"))
 
 valid_races = races[(races['year'] >= 2011) & (races['year'] <= 2022)]['raceId']
 pit_filtered = pit[pit['raceId'].isin(valid_races)]
@@ -50,7 +53,6 @@ assert race_years.min() >= 2011, f"FAIL: pit data includes pre-2011 races"
 assert race_years.max() <= 2022, f"FAIL: pit data includes post-2022 races"
 
 # Test 8: Image created
-import os
-assert os.path.exists("plots/viz_pitstops.png"), "FAIL: image not found"
+assert os.path.exists(os.path.join(PROJECT_ROOT, "plots", "viz_pitstops.png")), "FAIL: image not found"
 
 print("ALL viz_pitstops tests PASSED")
