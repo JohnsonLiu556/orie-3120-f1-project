@@ -62,6 +62,7 @@ for yr, label in events:
         rotation=90,
     )
 
+ax.set_ylim(0, 70)
 ax.set_xlim(2002.5, 2022.5)
 ax.set_xticks(range(2003, 2023, 2))
 ax.set_xticklabels(range(2003, 2023, 2), rotation=45)
