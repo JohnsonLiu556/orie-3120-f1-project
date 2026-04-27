@@ -1,0 +1,16 @@
+OLS Regression Assumption Tests
+Model: finishing position ~ grid + era_2010_2019 + era_2020_2022 + circuit_type_street
+======================================================================
+
+1. Test for constant variance 
+   LM statistic : 237.5970
+   LM p-value   : 3.0544e-50
+   F statistic  : 61.1729
+   F p-value    : 5.4739e-51
+   Interpretation: Evidence of heteroscedasticity (p < 0.05)
+
+2. Test for normality of residuals
+   (subsample n = 5,000 drawn randomly with seed 42)
+   W statistic  : 0.951697
+   p-value      : 9.3899e-38
+   Interpretation: Residuals are not normally distributed (p < 0.05)

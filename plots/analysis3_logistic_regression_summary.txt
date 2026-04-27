@@ -1,0 +1,29 @@
+Logistic Regression: win ~ pole + era_2010_2019 + era_2020_2022 + circuit_type_street
+Baseline era: 2003–2009  |  Baseline circuit type: Permanent
+==============================================================================
+
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                    win   No. Observations:                 8027
+Model:                          Logit   Df Residuals:                     8022
+Method:                           MLE   Df Model:                            4
+Date:                Sun, 26 Apr 2026   Pseudo R-squ.:                  0.2557
+Time:                        21:20:56   Log-Likelihood:                -1143.2
+converged:                       True   LL-Null:                       -1536.0
+Covariance Type:            nonrobust   LLR p-value:                1.033e-168
+=======================================================================================
+                          coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------
+const                  -3.6717      0.118    -31.088      0.000      -3.903      -3.440
+pole                    3.7274      0.126     29.505      0.000       3.480       3.975
+era_2010_2019          -0.0330      0.135     -0.245      0.807      -0.297       0.231
+era_2020_2022           0.0215      0.185      0.116      0.907      -0.340       0.383
+circuit_type_street    -0.0006      0.147     -0.004      0.997      -0.289       0.288
+=======================================================================================
+
+Odds Ratios (exponentiated coefficients):
+                     Coefficient (log-odds)  Odds Ratio  OR 95% CI lower  OR 95% CI upper  p-value
+pole                                 3.7274     41.5699          32.4524          53.2489   0.0000
+era_2010_2019                       -0.0330      0.9676           0.7429           1.2601   0.8068
+era_2020_2022                        0.0215      1.0217           0.7115           1.4671   0.9074
+circuit_type_street                 -0.0006      0.9994           0.7492           1.3333   0.9970

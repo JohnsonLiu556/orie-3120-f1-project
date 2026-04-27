@@ -1,0 +1,32 @@
+OLS Regression: finishing position ~ grid + era_2010_2019 + era_2020_2022 + circuit_type_street
+Baseline era: 2003–2009  |  Baseline circuit type: Permanent
+==============================================================================
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               position   R-squared:                       0.370
+Model:                            OLS   Adj. R-squared:                  0.370
+Method:                 Least Squares   F-statistic:                     1179.
+Date:                Sun, 26 Apr 2026   Prob (F-statistic):               0.00
+Time:                        20:43:45   Log-Likelihood:                -24146.
+No. Observations:                8027   AIC:                         4.830e+04
+Df Residuals:                    8022   BIC:                         4.834e+04
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+=======================================================================================
+                          coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------
+const                   4.2418      0.139     30.429      0.000       3.969       4.515
+grid                    0.6083      0.009     68.348      0.000       0.591       0.626
+era_2010_2019           0.2510      0.123      2.039      0.042       0.010       0.492
+era_2020_2022          -0.1287      0.171     -0.753      0.451      -0.464       0.206
+circuit_type_street    -0.0083      0.134     -0.062      0.951      -0.271       0.254
+==============================================================================
+Omnibus:                      769.633   Durbin-Watson:                   1.990
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1017.814
+Skew:                           0.813   Prob(JB):                    9.65e-222
+Kurtosis:                       3.630   Cond. No.                         47.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
