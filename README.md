@@ -37,9 +37,9 @@ pip install -r requirements.txt
 
 3. **Run data analysis (Projetc Milestone 2)**:
    ```bash
-   python scripts/analysis_linear_regression.py    # Linear regression: grid → finish position
+   python scripts/analysis_linear_regression.py    # Linear regression: grid -> finish position
    python scripts/analysis_residual_plots.py       # Residual diagnostics & assumption testing
-   python scripts/analysis_logistic_regression.py   # Logistic regression: pole → win probability
+   python scripts/analysis_logistic_regression.py   # Logistic regression: pole -> win probability
    python scripts/analysis_train_test.py            # Train/test split model comparison by era
    ```
 
